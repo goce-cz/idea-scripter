@@ -1,0 +1,58 @@
+<idea-plugin version="2">
+  <id>cz.goce.idea.scripter</id>
+  <name>IDEA Scripter</name>
+  <version>1.0</version>
+  <vendor email="goce@goce.cz" url="http://www.goce.cz">Goce</vendor>
+
+  <description><![CDATA[
+      Simple plugin that allows running of JavaScript scripts via the embeded Nashorn engine.
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Initial release
+    ]]>
+  </change-notes>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="idea-scripter-console" anchor="bottom" factoryClass="cz.goce.idea.scripter.ConsoleWindowFactory"/>
+  </extensions>
+
+  <project-components>
+    <!-- Add your project components here -->
+    <component>
+      <implementation-class>cz.goce.idea.scripter.PluginManager</implementation-class>
+    </component>
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+
+    <group id="idea-scripter" text="IDEA scripter" popup="true">
+      <add-to-group group-id="ProjectViewPopupMenuRunGroup" anchor="last"/>
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+      <action id="idea-scripter-execute" class="cz.goce.idea.scripter.ExecuteScript" text="Run in IDEA"/>
+      <action id="idea-scripter-install" class="cz.goce.idea.scripter.InstallPlugin" text="Install as plugin"/>
+      <action id="idea-scripter-uninstall" class="cz.goce.idea.scripter.UninstallPlugin" text="Uninstall plugin"/>
+      <separator/>
+      <action id="idea-scripter-compileOnSave" class="cz.goce.idea.scripter.CompileOnSave" text="Compile on save"/>
+      <separator/>
+    </group>
+  </actions>
+
+  <depends>JavaScript</depends>
+  <application-components>
+    <component>
+      <implementation-class>cz.goce.idea.scripter.SaveListener</implementation-class>
+    </component>
+  </application-components>
+</idea-plugin>

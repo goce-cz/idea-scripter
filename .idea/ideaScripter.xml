@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="pluginManager">
+    <option name="installedPlugins">
+      <list>
+        <option value="ts-nashorn.idea-scripter.js" />
+      </list>
+    </option>
+    <option name="compileOnSave" value="true" />
+  </component>
+</project>
